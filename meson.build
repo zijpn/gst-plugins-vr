@@ -17,6 +17,7 @@ openhmd_dep = dependency('openhmd', required : false)
 freenect2_dep = dependency('freenect2', required : false)
 glib_dep = dependency('glib-2.0')
 gio_dep = dependency('gio-2.0')
+opencv_dep = dependency('opencv', required : false)
 assimp_dep = dependency('assimp')
 gst_dep = dependency('gstreamer-' + apiversion, version: GST_DEP_VERSION)
 gst_gl_dep = dependency('gstreamer-gl-' + apiversion, version: GST_DEP_VERSION)
@@ -129,7 +130,7 @@ if freenect2_dep.found()
     'gst/freenect2/gstfreenect2src.cpp',
     'gst/freenect2/gstfreenect2.cpp',
     install : true,
-    dependencies : [glib_dep, gobject_dep, gst_dep, gst_gl_dep, gst_video_dep, graphene_dep, freenect2_dep, openhmd_dep, gio_dep],
+    dependencies : [glib_dep, gobject_dep, gst_dep, gst_gl_dep, gst_video_dep, graphene_dep, freenect2_dep, openhmd_dep, gio_dep, opencv_dep],
     c_args : gst_c_args,
     install_dir : '@0@/gstreamer-1.0'.format(get_option('libdir')),
     link_with: [gst_3d_lib]
